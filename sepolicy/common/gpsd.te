@@ -37,6 +37,9 @@ allow gpsd system_server:unix_stream_socket { read write };
 set_prop(gpsd, gpsd_prop);
 set_prop(gpsd, ctl_default_prop);
 
+# Audit2Allow wanted this, NeverAllow is denying it
+#allow gpsd default_prop:property_service set;
+
 # Perform binder IPC to system_server
 binder_call(gpsd, system_server);
 binder_use(gpsd);

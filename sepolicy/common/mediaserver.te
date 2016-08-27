@@ -51,3 +51,11 @@ allow mediaserver anr_data_file:file write;
 
 # Allow access to blake video files
 allow mediaserver oem_media_file:file { read getattr };
+
+# As determined by Audit2Allow
+allow mediadrmserver gpu_device:chr_file { ioctl open read write };
+allow mediadrmserver video_device:chr_file { ioctl open read write };
+allow mediacodec camera_device:chr_file { ioctl open read write };
+allow mediacodec sysfs:file { read open };
+allow mediacodec sysfs_soc:dir search;
+

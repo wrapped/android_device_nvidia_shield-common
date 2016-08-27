@@ -80,6 +80,11 @@ allow system_server handshake_sys_vold_prop:property_service set;
 # Storage stub file
 allow system_server storage_stub_file:dir getattr;
 
+# As determined by Audit2Allow
+allow system_server hwui_prop:file { read open getattr };
+# Audit2Allow wanted this, NeverAllow is denying it
+#allow system_server self:process execmem;
+
 allow system_server self:capability sys_module;
 auditallow system_server self:capability sys_module;
 

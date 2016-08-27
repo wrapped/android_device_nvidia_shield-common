@@ -18,5 +18,10 @@ type set_hwui_exec, exec_type, file_type;
 init_daemon_domain(set_hwui)
 set_prop(set_hwui, hwui_prop)
 
-allow set_hwui shell_exec:file read;
+allow set_hwui shell_exec:file { read getattr };
 allow set_hwui system_file:file execute_no_trans;
+
+# As determined by Audit2Allow
+allow set_hwui proc_meminfo:file { open read getattr };
+allow set_hwui sysfs:file { open read getattr };
+allow set_hwui toolbox_exec:file { execute execute_no_trans open read getattr };

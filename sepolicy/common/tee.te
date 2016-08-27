@@ -13,9 +13,12 @@
 # limitations under the License.
 
 allow tee tee_data_file:dir create_dir_perms;
-allow tee shell_exec:file { read open execute };
+allow tee shell_exec:file { read open execute getattr };
 allow tee tee_exec:file execute_no_trans;
 allow tee self:capability { setuid setgid sys_rawio };
 allow tee block_device:dir search;
 allow tee rpmb_block_device:blk_file rw_file_perms;
 allow tee cpc_device:chr_file rw_file_perms;
+
+# As determined by Audit2Allow
+allow tee toolbox_exec:file { execute execute_no_trans open read getattr };

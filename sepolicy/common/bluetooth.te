@@ -22,3 +22,6 @@ allow bluetooth system_app_service:service_manager find;
 
 # Allow to write to nvfeedback log file
 allow bluetooth anr_data_file:file write;
+
+# As determined by Audit2Allow
+allow bluetooth storage_stub_file:dir getattr;

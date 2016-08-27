@@ -18,6 +18,11 @@ allow untrusted_app tsec_device:chr_file rw_file_perms;
 # Access to read SOC family
 r_dir_file(untrusted_app, sysfs_soc)
 
+# As determined by Audit2Allow
+allow untrusted_app hwui_prop:file { read open getattr };
+allow untrusted_app rootfs:dir read;
+allow untrusted_app sysfs:file { read open getattr };
+
 allow untrusted_app system_app_service:service_manager find;
 
 # allow to write to nvfeedback.log

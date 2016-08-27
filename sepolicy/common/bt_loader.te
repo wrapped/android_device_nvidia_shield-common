@@ -18,7 +18,13 @@ type bt_loader_exec, exec_type, file_type;
 init_daemon_domain(bt_loader)
 set_prop(bt_loader, bdaddr_path_prop)
 
-allow bt_loader shell_exec:file read;
+# As determined by Audit2Allow
+allow bt_loader shell_exec:file { read getattr };
+allow bt_loader toolbox_exec:file { getattr execute execute_no_trans open read };
+
+# Audit2Allow wanted this, NeverAllow is denying it
+#allow bt_loader default_prop:property_service set;
+
 allow bt_loader system_file:file execute_no_trans;
 allow bt_loader devpts:chr_file rw_file_perms;
 

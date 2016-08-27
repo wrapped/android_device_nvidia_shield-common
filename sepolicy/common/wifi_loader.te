@@ -36,6 +36,12 @@ allow wifi_loader system_file:file execute_no_trans;
 allow wifi_loader proc_wmem_default_writable:file w_file_perms;
 allow wifi_loader proc_wmem_max_writable:file w_file_perms;
 
+# As determined by Audit2Allow
+allow wifi_loader sysfs:dir { open read };
+allow wifi_loader sysfs:file { open read };
+allow wifi_loader tmpfs:dir search;
+allow wifi_loader toolbox_exec:file { execute_no_trans open read getattr execute };
+
 # Allow wifi_loader to read a custom MAC address from /mnt/factory/<wifi>
 r_dir_file(wifi_loader, factory_file)
 

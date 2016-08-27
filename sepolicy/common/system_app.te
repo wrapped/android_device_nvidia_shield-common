@@ -104,3 +104,7 @@ allow system_app ctl_default_prop:property_service set;
 allow system_app dumpstate_exec:file { read getattr open execute execute_no_trans };
 allow system_app anr_data_file:dir remove_name;
 allow system_app media_rw_data_file:dir { read getattr open search };
+
+# As determined by Audit2Allow
+allow system_app hwui_prop:file { read open getattr };
+allow system_app radio_data_file:dir getattr;
