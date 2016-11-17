@@ -15,6 +15,8 @@
 # Camera data files
 allow mediaserver nv_camera_data_file:dir create_dir_perms;
 allow mediaserver nv_camera_data_file:file create_file_perms;
+allow mediaserver cameraproxy_service:service_manager find;
+allow mediaserver cameraserver_service:service_manager add;
 
 # NVSensor socket files
 allow mediaserver nvs_socket:dir rw_dir_perms;
